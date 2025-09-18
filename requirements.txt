@@ -1,0 +1,15 @@
+faster-whisper
+sounddevice
+numpy
+pydub
+simpleaudio
+ollama
+chromadb
+sentence-transformers
+apscheduler
+pystray
+pillow
+keyboard
+python-dotenv
+rich
+dateparser
