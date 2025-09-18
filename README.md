@@ -452,3 +452,27 @@ Record scores in a CSV; choose the best cost/quality.
 5. Try the Model Bake‑Off when you’re comfortable.
 
 You now have a private, non‑robotic voice companion that runs locally and grows with you. Add one feature at a time and let Kyle help plan the next step. 🚀
+
+---
+
+## Repository Overview
+
+The `app/` directory contains a minimal, ready-to-run prototype that wires together the speech, language, memory, and action subsystems described above:
+
+* `app/main.py` — CLI entry-point that glues the modules together.
+* `app/agent/` — implementation of the Faster-Whisper STT wrapper, Piper TTS helper, Ollama-backed brain, memory store, intent router, and reminder/checklist actions.
+* `app/ui/tray.py` — optional system tray and hotkey helpers for a desktop experience.
+* `data/` — persisted SQLite database, vector store, temporary audio, and journal/log files.
+
+Supporting configuration lives in `app/.env`, while Python dependencies are listed in `requirements.txt`.
+
+---
+
+## Running the CLI Prototype
+
+1. Create and activate a Python 3.11+ virtual environment.
+2. Install dependencies: `pip install -r requirements.txt`.
+3. Populate `app/.env` with your desired Ollama model and Piper voice path.
+4. Launch the assistant: `python app/main.py`.
+
+On first launch, the assistant will initialise the memory database, reminder scheduler, and journal. Use plain text input in this environment, or enter `:voice` on Windows to record a 10-second clip for transcription. Replies are printed with Rich formatting and saved as audio files when Piper is configured.
